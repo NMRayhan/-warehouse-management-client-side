@@ -1,0 +1,18 @@
+.product-container {
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  border: 2px solid grey;
+  padding: 10px;
+  height: auto;
+}
+
+.product-img img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.product-details{
+    padding: 5px;
+}

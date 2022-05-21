@@ -3,20 +3,38 @@ import { Col, Container, Form, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 
 const AddProduct = () => {
-  const {
-    register,
-    handleSubmit,
-  } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const { register, handleSubmit } = useForm();
+  const onSubmit = (data) => {
+    const url = "http://localhost:5000/addProduct";
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((request) => request.json())
+      .then((data) => {
+        console.log(data);
+      });
+  };
+
   return (
     <div>
       <Container>
         <Form onSubmit={handleSubmit(onSubmit)}>
           <Form.Group className="mt-3">
+            <Form.Label>Admin Email</Form.Label>
+            <Form.Control
+              type="email"
+              {...register("Admin_email", { required: true })}
+            />
+          </Form.Group>
+          <Form.Group className="mt-3">
             <Form.Label>Product Name</Form.Label>
             <Form.Control
               type="text"
-              {...register("Product_Name", { required: true, maxLength: 100 })}
+              {...register("Product_Name", { required: true, maxLength: 500 })}
             />
           </Form.Group>
           <Form.Group className="mt-3">
