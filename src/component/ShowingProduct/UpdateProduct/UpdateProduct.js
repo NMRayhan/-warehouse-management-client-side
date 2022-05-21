@@ -1,9 +1,23 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Col, Container, Form, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
+import { useParams } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 
-const AddProduct = () => {
+const UpdateProduct = () => {
+  const [details, setDetails] = useState([]);
+  const {_id} = useParams();
+  useEffect(() => {
+    const url = `http://localhost:5000/product/details/${_id}`;
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => {
+          setDetails(data)
+          console.log(data)
+      });
+  }, [_id]);
+
+
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
     const url = "http://localhost:5000/addProduct";
@@ -20,9 +34,11 @@ const AddProduct = () => {
       });
   };
 
+
   return (
     <div>
       <Container>
+      <h2 className="text-center text-success fw-bold mt-3">Update Product </h2>
       <ToastContainer />
         <Form onSubmit={handleSubmit(onSubmit)}>
           <Form.Group className="mt-3">
@@ -78,9 +94,6 @@ const AddProduct = () => {
               <Col className="d-grid gap-2">
                 <input type="submit" className="btn btn-outline-primary" />
               </Col>
-              <Col className="d-grid gap-2">
-                <input type="reset" className="btn btn-outline-danger" />
-              </Col>
             </Row>
           </Form.Group>
         </Form>
@@ -89,4 +102,4 @@ const AddProduct = () => {
   );
 };
 
-export default AddProduct;
+export default UpdateProduct;
