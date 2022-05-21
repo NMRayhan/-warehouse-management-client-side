@@ -7,6 +7,7 @@ import AddProduct from "./component/AddProduct/AddProduct";
 import Products from "./component/ShowingProduct/Products/Products";
 import MyProduct from "./component/ShowingProduct/MyProduct/MyProduct";
 import Home from "./component/Home/Home";
+import ProductDetails from "./component/ShowingProduct/ProductDetails/ProductDetails";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/addProduct" element={<AddProduct></AddProduct>}></Route>
         <Route path="/manageInventory" element={<Products></Products>}></Route>
         <Route path="/myAdded" element={<MyProduct></MyProduct>}></Route>
+        <Route path="/details/:_id" element={<ProductDetails></ProductDetails>}></Route>
       </Routes>
       <Footer></Footer>
     </div>

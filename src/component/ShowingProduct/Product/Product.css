@@ -16,3 +16,11 @@
 .product-details{
     padding: 5px;
 }
+
+.Product a{
+    text-decoration: none;
+    color: black;
+}
+.Product a:hover{
+    color: gray;
+}
