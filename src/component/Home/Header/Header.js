@@ -42,7 +42,7 @@ const Header = () => {
                 <CustomLink to="/manageInventory">Manage Inventory</CustomLink>
               </Nav.Link>
               <Nav.Link className="custom-nav-item">
-                <CustomLink to="/myAdded">My added Product</CustomLink>
+                <CustomLink to={`/myAdded/${user?.email}`}>My added Product</CustomLink>
               </Nav.Link>
             </Nav>
             <Nav className="ms-auto">

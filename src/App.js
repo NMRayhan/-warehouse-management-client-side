@@ -35,7 +35,7 @@ function App() {
         ></Route>
 
         <Route
-          path="/myAdded"
+          path="/myAdded/:email"
           element={
             <RequireAuth>
               <MyProduct />
