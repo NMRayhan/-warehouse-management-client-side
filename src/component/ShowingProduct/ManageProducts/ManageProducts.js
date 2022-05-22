@@ -39,9 +39,9 @@ const ManageProducts = () => {
   };
   let count = 1;
   return (
-    <div>
+    <div className="container table-responsive-sm table-responsive-md">
       <ToastContainer />
-      <table className="table">
+      <table className="table table-hover">
         <thead>
           <tr>
             <th scope="col">#</th>
@@ -66,7 +66,7 @@ const ManageProducts = () => {
                   <td>
                     <img
                       src={product.Product_Image_URL}
-                      style={{ width: "30%" }}
+                      style={{ width: "100%" }}
                       alt=""
                     />
                   </td>

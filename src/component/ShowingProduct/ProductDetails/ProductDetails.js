@@ -25,18 +25,29 @@ const ProductDetails = () => {
       });
   }, [_id, details]);
 
-
-  const HandleProductDelivery = (event) =>{
-    const url = `http://localhost:5000/product/quantity/update/${_id}`
+  const HandleProductDelivery = (event) => {
+    const url = `http://localhost:5000/product/quantity/update/${_id}`;
     fetch(url, {
-      method:"PUT",
+      method: "PUT",
       headers: {
         "content-type": "application/json",
       },
       body: JSON.stringify(details),
-    })
-  }
+    });
+  };
 
+  const HandleRestock = () => {
+    const number = window.prompt("Enter New Quantity of Item");
+    const quantity = parseInt(number);
+    const url = `http://localhost:5000/product/quantity/reStock/${_id}/${quantity}`;
+    fetch(url, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(details),
+    });
+  };
 
   return (
     <div className="container mt-5">
@@ -78,13 +89,19 @@ const ProductDetails = () => {
               </h3>
             </div>
             <div className="col-md-3">
-              <Button variant="outline-secondary">Re-Stock</Button>
+              <Button variant="outline-secondary" onClick={HandleRestock}>
+                Re-Stock
+              </Button>
             </div>
           </div>
         </div>
       </div>
       <div className="d-grid gap-2 col-4 mx-auto mt-4">
-        <button className="btn btn-outline-primary" onClick={HandleProductDelivery} type="button">
+        <button
+          className="btn btn-outline-primary"
+          onClick={HandleProductDelivery}
+          type="button"
+        >
           Delivered
         </button>
       </div>
