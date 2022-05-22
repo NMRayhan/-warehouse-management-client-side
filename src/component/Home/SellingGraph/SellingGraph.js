@@ -28,9 +28,9 @@ const SellingGraph = () => {
       <h2 className="text-center text-success fw-light">
         This Month Profit and Selling Price Graph
       </h2>
-      <ResponsiveContainer width="100%" height="100%">
+      <div className="d-grid align-items-center justify-content-center my-2">
         <LineChart
-          width={300}
+          width={700}
           height={300}
           data={data}
           margin={{ top: 5, right: 20, bottom: 5, left: 0 }}
@@ -43,7 +43,7 @@ const SellingGraph = () => {
           <Tooltip />
           <Legend />
         </LineChart>
-      </ResponsiveContainer>
+      </div>
     </div>
   );
 };
