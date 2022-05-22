@@ -21,8 +21,9 @@ const AddProduct = () => {
   };
 
   return (
-    <div>
+    <div style={{minHeight:"100vh"}}>
       <Container>
+        <h3 className="text-center text-primary fw-light mt-3">Add Product</h3>
       <ToastContainer />
         <Form onSubmit={handleSubmit(onSubmit)}>
           <Form.Group className="mt-3">

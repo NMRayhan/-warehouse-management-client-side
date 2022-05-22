@@ -39,8 +39,11 @@ const ManageProducts = () => {
   };
   let count = 1;
   return (
-    <div className="container table-responsive-sm table-responsive-md">
+    <div className="container table-responsive-sm table-responsive-md" style={{minHeight:"100vh"}}>
       <ToastContainer />
+      <div className="my-4">
+        <Button variant="outline-primary" onClick={()=>{navigate('/addProduct')}}>Add Product</Button>
+      </div>
       <table className="table table-hover">
         <thead>
           <tr>

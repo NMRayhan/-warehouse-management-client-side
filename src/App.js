@@ -9,6 +9,7 @@ import Home from "./component/Home/Home";
 import ProductDetails from "./component/ShowingProduct/ProductDetails/ProductDetails";
 import ManageProducts from "./component/ShowingProduct/ManageProducts/ManageProducts";
 import UpdateProduct from "./component/ShowingProduct/UpdateProduct/UpdateProduct";
+import Error404 from "./component/Common/Error404/Error404";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/myAdded" element={<MyProduct></MyProduct>}></Route>
         <Route path="/details/:_id" element={<ProductDetails></ProductDetails>}></Route>
         <Route path="/product/update/:_id" element={<UpdateProduct></UpdateProduct>}></Route>
+        <Route path="*" element={<Error404></Error404>}></Route>
       </Routes>
       <Footer></Footer>
     </div>

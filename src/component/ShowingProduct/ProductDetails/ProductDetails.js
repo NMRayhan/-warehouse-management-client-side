@@ -55,7 +55,7 @@ const ProductDetails = () => {
   };
 
   return (
-    <div className="container mt-5">
+    <div className="container mt-5" style={{minHeight:"100vh"}}>
       <hr />
       <ToastContainer/>
       <div className="row details-wrapper">

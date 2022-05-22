@@ -6,7 +6,7 @@ import "../Header/Header.css";
 
 const Header = () => {
   return (
-    <div>
+    <div className="sticky-top">
       <Navbar bg="light" expand="lg">
         <Container>
           <Navbar.Brand as={Link} to="/home">React-Bootstrap</Navbar.Brand>
