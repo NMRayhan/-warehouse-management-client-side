@@ -1,12 +1,12 @@
 import { initializeApp } from "firebase/app";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyACWPxmvldQ9bZO0KOeaSI2d97N2WipjfU",
-  authDomain: "bycycle-warehouse.firebaseapp.com",
-  projectId: "bycycle-warehouse",
-  storageBucket: "bycycle-warehouse.appspot.com",
-  messagingSenderId: "313164720133",
-  appId: "1:313164720133:web:a16d03f0793d593f3b946c"
+  apiKey:process.env.REACT_APP_apiKey,
+  authDomain:process.env.REACT_APP_authDomain,
+  projectId:process.env.REACT_APP_projectId,
+  storageBucket:process.env.REACT_APP_storageBucket,
+  messagingSenderId:process.env.REACT_APP_messagingSenderId,
+  appId:process.env.REACT_APP_appId,
 };
 
 // Initialize Firebase
