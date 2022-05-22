@@ -6,7 +6,7 @@ import auth from "../../../firebase.init";
 const MyProduct = () => {
   const [user] = useAuthState(auth);
   const [products, setProducts] = useState([]);
-
+  console.log(user);
   const { email } = useParams();
 
   useEffect(() => {
@@ -21,12 +21,12 @@ const MyProduct = () => {
   return (
     <div
       style={{ minHeight: "100vh" }}
-      className="container table-responsive-sm table-responsive-md"
+      className="container table-responsive"
     >
-      {user?.emailVerified ? (
+      {user?.emailVerified || user?.providerData[0]?.providerId === 'facebook.com' ? (
         <>
           <h4 className="text-center mt-2">
-            Admin Email: <span className="text-success">{email}</span>
+            Admin Email: <span className="text-success">{user?.email}</span>
           </h4>
           <table className="table table-hover">
             <thead>

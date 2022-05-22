@@ -13,8 +13,11 @@ import Error404 from "./component/Common/Error404/Error404";
 import SignIn from "./component/Authentication/SignIn/SignIn";
 import SignUp from "./component/Authentication/SignUp/SignUp";
 import RequireAuth from "./component/Authentication/RequireAuth/RequireAuth";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "./firebase.init";
 
 function App() {
+  const [user] = useAuthState(auth)
   return (
     <div>
       <Header></Header>

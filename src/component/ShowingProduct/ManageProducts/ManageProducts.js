@@ -49,7 +49,7 @@ const ManageProducts = () => {
   let count = 1;
   return (
     <div
-      className="container table-responsive-sm table-responsive-md"
+      className="container table-responsive"
       style={{ minHeight: "100vh" }}
     >
       <ToastContainer />
