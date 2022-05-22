@@ -19,7 +19,6 @@ const ManageProducts = () => {
       });
   }, []);
 
-  console.log(user);
   const handleUpdate = (_id) => {
     user
       ? navigate(`/product/update/${_id}`)

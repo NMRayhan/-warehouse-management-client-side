@@ -18,8 +18,6 @@ const SignIn = () => {
   let location = useLocation();
   let from = location.state?.from?.pathname || "/";
 
-  console.log(user);
-
   const handleSubmitForm = (event) => {
     event.preventDefault();
     const email = emailRef.current.value;

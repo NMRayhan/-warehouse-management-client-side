@@ -2,10 +2,15 @@ import React from "react";
 import { Col, Container, Form, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { toast, ToastContainer } from "react-toastify";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../firebase.init";
 
 const AddProduct = () => {
   const { register, handleSubmit } = useForm();
+  const [user] = useAuthState(auth);
+
   const onSubmit = (data) => {
+    console.log("clicked");
     const url = "http://localhost:5000/addProduct";
     fetch(url, {
       method: "POST",
@@ -21,16 +26,18 @@ const AddProduct = () => {
   };
 
   return (
-    <div style={{minHeight:"100vh"}}>
+    <div style={{ minHeight: "100vh" }}>
       <Container>
         <h3 className="text-center text-primary fw-light mt-3">Add Product</h3>
-      <ToastContainer />
+        <ToastContainer />
         <Form onSubmit={handleSubmit(onSubmit)}>
           <Form.Group className="mt-3">
             <Form.Label>Admin Email</Form.Label>
             <Form.Control
               type="email"
               {...register("Admin_email", { required: true })}
+              value={user?.email}
+              readOnly
             />
           </Form.Group>
           <Form.Group className="mt-3">
