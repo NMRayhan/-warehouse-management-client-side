@@ -24,10 +24,13 @@ const SellingGraph = () => {
     { name: "Gear Cycle", Profit: 4500, sellingPrice: 240, amt: 240 },
   ];
   return (
-      <div className="container w-100" style={{height:"400px"}}>
-        <h2 className="text-center text-success fw-light">This Month Profit and Selling Price Graph</h2>
+    <div className="container w-100">
+      <h2 className="text-center text-success fw-light">
+        This Month Profit and Selling Price Graph
+      </h2>
+      <ResponsiveContainer width="100%" height="100%">
         <LineChart
-          width={500}
+          width={300}
           height={300}
           data={data}
           margin={{ top: 5, right: 20, bottom: 5, left: 0 }}
@@ -40,6 +43,7 @@ const SellingGraph = () => {
           <Tooltip />
           <Legend />
         </LineChart>
+      </ResponsiveContainer>
     </div>
   );
 };

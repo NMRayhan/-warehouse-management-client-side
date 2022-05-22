@@ -3,7 +3,7 @@
   grid-template-rows: repeat(2, 1fr);
   border: 2px solid grey;
   padding: 10px;
-  height: auto;
+  min-height: 450px;
 }
 
 .product-img img {
