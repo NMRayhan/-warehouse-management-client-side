@@ -1,7 +1,6 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Col, Container, Form, Row } from "react-bootstrap";
-import { Navigate, useNavigate, useParams } from "react-router-dom";
-import { toast, ToastContainer } from "react-toastify";
+import { useNavigate, useParams } from "react-router-dom";
 
 const UpdateProduct = () => {
   const [details, setDetails] = useState([]);
@@ -88,11 +87,7 @@ const UpdateProduct = () => {
     })
       .then((request) => request.json())
       .then((data) => {
-        console.log(data);
-        toast("Product Update Successfully");
-        setInterval(() => {
-            navigate("/manageInventory");
-        }, 3000);
+        navigate("/manageInventory");
       });
   };
 
@@ -102,7 +97,6 @@ const UpdateProduct = () => {
         <h2 className="text-center text-success fw-bold mt-3">
           Update Product{" "}
         </h2>
-        <ToastContainer />
         <Form onSubmit={handleSubmit}>
           <Form.Group className="mt-3">
             <Form.Label>Admin Email</Form.Label>

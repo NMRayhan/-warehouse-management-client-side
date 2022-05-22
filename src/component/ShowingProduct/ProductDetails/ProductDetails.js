@@ -13,9 +13,9 @@ const ProductDetails = () => {
     Quantity,
     Product_Name,
     Product_Image_URL,
-    Admin_email,
     Price,
   } = details;
+
   useEffect(() => {
     const url = `http://localhost:5000/product/details/${_id}`;
     fetch(url)
@@ -23,9 +23,21 @@ const ProductDetails = () => {
       .then((data) => {
         setDetails(data);
       });
-  }, [_id]);
+  }, [_id, details]);
 
-  console.log(details);
+
+  const HandleProductDelivery = (event) =>{
+    const url = `http://localhost:5000/product/quantity/update/${_id}`
+    fetch(url, {
+      method:"PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(details),
+    })
+  }
+
+
   return (
     <div className="container mt-5">
       <hr />
@@ -71,8 +83,8 @@ const ProductDetails = () => {
           </div>
         </div>
       </div>
-      <div class="d-grid gap-2 col-4 mx-auto mt-4">
-        <button class="btn btn-outline-primary" type="button">
+      <div className="d-grid gap-2 col-4 mx-auto mt-4">
+        <button className="btn btn-outline-primary" onClick={HandleProductDelivery} type="button">
           Delivered
         </button>
       </div>
