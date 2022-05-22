@@ -1,10 +1,13 @@
 import React, { useRef } from "react";
 import { Button, Form } from "react-bootstrap";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import {
+  signInWithEmailAndPassword,
+  sendPasswordResetEmail,
+} from "firebase/auth";
 import auth from "../../../firebase.init";
-import { toast,ToastContainer } from "react-toastify";
-import { useAuthState } from 'react-firebase-hooks/auth';
+import { toast, ToastContainer } from "react-toastify";
+import { useAuthState } from "react-firebase-hooks/auth";
 import SocialLogin from "../SocialLogin/SocialLogin";
 
 const SignIn = () => {
@@ -28,12 +31,19 @@ const SignIn = () => {
         navigate(from, { replace: true });
       })
       .catch((error) => {
-        toast(error.message)
+        toast(error.message);
       });
   };
 
   const handleResetEmail = async () => {
     const email = emailRef.current.value;
+    sendPasswordResetEmail(auth, email)
+      .then(() => {
+        toast("Please Check Your Email for Password Reset Link");
+      })
+      .catch((error) => {
+        toast(error.message);
+      });
   };
 
   const navigateToRegister = () => {
@@ -41,7 +51,7 @@ const SignIn = () => {
   };
   return (
     <div style={{ minHeight: "100vh" }} className="mx-auto w-25">
-      <ToastContainer/>
+      <ToastContainer />
       <Form className="py-4" onSubmit={handleSubmitForm}>
         <h1 className="text-center fs-1 text-secondary">User Login</h1>
         <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -91,7 +101,7 @@ const SignIn = () => {
           Reset password
         </button>{" "}
       </p>
-      <SocialLogin/>
+      <SocialLogin />
     </div>
   );
 };

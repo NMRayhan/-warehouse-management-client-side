@@ -49,7 +49,11 @@ function App() {
         ></Route>
         <Route
           path="/product/update/:_id"
-          element={<UpdateProduct></UpdateProduct>}
+          element={
+            <RequireAuth>
+              <UpdateProduct />
+            </RequireAuth>
+          }
         ></Route>
         <Route path="/login" element={<SignIn />}></Route>
         <Route path="/register" element={<SignUp />}></Route>

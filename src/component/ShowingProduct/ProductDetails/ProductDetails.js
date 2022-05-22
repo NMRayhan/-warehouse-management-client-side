@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "./ProductDetails.css";
+import { useAuthState} from "react-firebase-hooks/auth";
+import auth from "../../../firebase.init";
 
 const ProductDetails = () => {
   const [details, setDetails] = useState([]);
   const { _id } = useParams();
+  const [user] = useAuthState(auth);
+  const navigate = useNavigate();
 
   const {
     Supplier_Name,
@@ -27,37 +31,55 @@ const ProductDetails = () => {
   }, [_id, details]);
 
   const HandleProductDelivery = (event) => {
-    const url = `http://localhost:5000/product/quantity/update/${_id}`;
-    fetch(url, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(details),
-    }).then(res => res.json()).then(data => {
-      toast("Product Delivery Complete")
-    })
+    if (user) {
+      const url = `http://localhost:5000/product/quantity/update/${_id}`;
+      fetch(url, {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(details),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          toast("Product Delivery Complete");
+        });
+    } else {
+      navigate(`/details/${_id}`);
+      toast("Please Login or Register Your self as Admin");
+    }
   };
 
   const HandleRestock = () => {
-    const number = window.prompt("Enter New Quantity of Item");
-    const quantity = parseInt(number);
-    const url = `http://localhost:5000/product/quantity/reStock/${_id}/${quantity}`;
-    fetch(url, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(details),
-    }).then(res => res.json()).then(data => {
-      toast("Product Re-stock Complete")
-    });
+    if (user) {
+      const number = window.prompt("Enter New Quantity of Item");
+      const quantity = parseInt(number);
+      if (quantity > 0) {
+        const url = `http://localhost:5000/product/quantity/reStock/${_id}/${quantity}`;
+        fetch(url, {
+          method: "PUT",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(details),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            toast("Product Re-stock Complete");
+          });
+      } else {
+        return;
+      }
+    } else {
+      toast("Please Login or Register Your self as Admin");
+      navigate(`/details/${_id}`);
+    }
   };
 
   return (
-    <div className="container mt-5" style={{minHeight:"100vh"}}>
+    <div className="container mt-5" style={{ minHeight: "100vh" }}>
       <hr />
-      <ToastContainer/>
+      <ToastContainer />
       <div className="row details-wrapper">
         <div className="col-md-4 col-lg-4 col-sm-12 product-img border">
           <img src={Product_Image_URL} alt="" className="" />

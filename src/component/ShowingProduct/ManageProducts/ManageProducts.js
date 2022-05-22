@@ -2,10 +2,13 @@ import React, { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../../firebase.init";
 
 const ManageProducts = () => {
+  const [user] = useAuthState(auth);
   const [products, setProducts] = useState([]);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
     const url = `http://localhost:5000/products`;
@@ -16,33 +19,50 @@ const ManageProducts = () => {
       });
   }, []);
 
+  console.log(user);
   const handleUpdate = (_id) => {
-    navigate(`/product/update/${_id}`)
+    user
+      ? navigate(`/product/update/${_id}`)
+      : navigate(`/login`);
   };
 
   const handleDelete = (id) => {
-    const proceed = window.confirm("are you sure to delete this product?");
-    if (proceed) {
-      const url = `http://localhost:5000/product/${id}`;
-      fetch(url, {
-        method: "DELETE",
-      })
-        .then((request) => request.json())
-        .then((data) => {
-          toast("Product Deleted Successfully");
-          if (data.deletedCount > 0) {
-            const remaining = products.filter((pd) => pd._id !== id);
-            setProducts(remaining);
-          }
-        });
+    if (user) {
+      const proceed = window.confirm("are you sure to delete this product?");
+      if (proceed) {
+        const url = `http://localhost:5000/product/${id}`;
+          fetch(url, {
+            method: "DELETE",
+          })
+          .then((request) => request.json())
+          .then((data) => {
+            toast("Product Deleted Successfully");
+            if (data.deletedCount > 0) {
+              const remaining = products.filter((pd) => pd._id !== id);
+              setProducts(remaining);
+            }
+          });
+      }
+    }else{
+      navigate(`/login`);
     }
   };
   let count = 1;
   return (
-    <div className="container table-responsive-sm table-responsive-md" style={{minHeight:"100vh"}}>
+    <div
+      className="container table-responsive-sm table-responsive-md"
+      style={{ minHeight: "100vh" }}
+    >
       <ToastContainer />
       <div className="my-4">
-        <Button variant="outline-primary" onClick={()=>{navigate('/addProduct')}}>Add Product</Button>
+        <Button
+          variant="outline-primary"
+          onClick={() => {
+            navigate("/addProduct");
+          }}
+        >
+          Add Product
+        </Button>
       </div>
       <table className="table table-hover">
         <thead>
