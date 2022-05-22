@@ -1,53 +1,36 @@
-# Getting Started with Create React App
+# ByCycle Warehouse
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Live Link [ByCycle Warehouse](https://bycycle-warehouse.web.app/).
 
-## Available Scripts
+## Live Web Site Link
 
-In the project directory, you can run:
+ https://bycycle-warehouse.web.app/
 
-### `npm start`
+### `Short Description`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+This is a small warehouse business website, this site have a header section and some manue option. home, blog, manage inventory inventory, add item, My item and login option. some option are hide with out login. 
+in home page have some section ,at first have a slider section use react carosal and 2nd have a inventory section, in inventory section have 6 type of sports item . then have process section, this section have three step of product process system. and then have software working system and show this section Software that gives you the visibility you need.
+and last have a footer section.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### `inventory`
 
-### `npm test`
+In inventory have lot of product and have product details : name, user email, description, quantity, price and image. and have a button for product details use this button user can change go product details and change quantity for delevered and update.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### `My item`
 
-### `npm run build`
+in this page have user all product list. user can see all product in this page and delete product in this page.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### `Add Item`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+In Add Item page have a form and have in input form name, email, description, quantity, price and image url field. use this form user add product for this warehouse. 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Login
 
-### `npm run eject`
+In login section use react bootstrap form and use firebase for login . use email password login option and use social login use google and use this form firebase authentication. try this page spinner, toast, alart, email verification after register, and reset password.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Technology
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+In Sports Mans Warehouse Website use react, bootstrap, react bootstrap, node ja, express, MongoDB, heroko, axios, MongoDB CRUD, Firebase And more of tools.
 
 ### Analyzing the Bundle Size
 
