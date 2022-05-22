@@ -1,20 +1,36 @@
 import React from "react";
 import { Button, Container, Nav, Navbar } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import auth from "../../../firebase.init";
 import CustomLink from "../../Common/CustomLink/CustomLink";
 import "../Header/Header.css";
+import { useAuthState} from "react-firebase-hooks/auth";
+import { signOut } from "firebase/auth";
 
 const Header = () => {
+  const navigate = useNavigate();
+  const [user] = useAuthState(auth);
+
+  const logout = () => {
+    signOut(auth).then(() => {
+      console.log("Sign-out successful");
+    }).catch((error) => {
+      console.log(error.message);
+    });
+  };
+
   return (
     <div className="sticky-top">
       <Navbar bg="light" expand="lg">
         <Container>
-          <Navbar.Brand as={Link} to="/home">React-Bootstrap</Navbar.Brand>
+          <Navbar.Brand as={Link} to="/">
+            React-Bootstrap
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">
               <Nav.Link className="custom-nav-item">
-                <CustomLink to="/home">Home</CustomLink>
+                <CustomLink to="/">Home</CustomLink>
               </Nav.Link>
               <Nav.Link className="custom-nav-item">
                 <CustomLink to="/blog">Blog</CustomLink>
@@ -30,8 +46,30 @@ const Header = () => {
               </Nav.Link>
             </Nav>
             <Nav className="ms-auto">
-              <Nav.Link href="#">Nur Mohammad Rayhan</Nav.Link>
-              <Button variant="outline-secondary">Sign Out</Button>
+              {user ? (
+                <>
+                  <Nav.Link href="#">{user?.displayName}</Nav.Link>
+                  <Button
+                    variant="outline-secondary"
+                    onClick={() => {
+                      logout();
+                    }}
+                  >
+                    Sign Out
+                  </Button>
+                </>
+              ) : (
+                <>
+                  <Button
+                    variant="outline-secondary"
+                    onClick={() => {
+                      navigate("/login");
+                    }}
+                  >
+                    Sign In
+                  </Button>
+                </>
+              )}
             </Nav>
           </Navbar.Collapse>
         </Container>

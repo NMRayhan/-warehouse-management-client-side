@@ -5,16 +5,12 @@ import "./Product.css";
 const Product = (props) => {
   const {
     _id,
-    Supplier_Name,
-    Short_Description,
-    Quantity,
     Product_Name,
     Product_Image_URL,
-    Admin_email,
     Price,
   } = props.details;
   return (
-    <div className="col-md-3 mt-4 Product">
+    <div className="col-lg-4 col-md-6 col-sm-12 mt-4 Product">
       <Link to={`/details/${_id}`} >
         <div className="product-container">
           <div className="product-img">

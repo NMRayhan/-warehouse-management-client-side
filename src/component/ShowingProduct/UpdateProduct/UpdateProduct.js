@@ -92,7 +92,7 @@ const UpdateProduct = () => {
   };
 
   return (
-    <div>
+    <div style={{minHeight:"100vh"}}>
       <Container>
         <h2 className="text-center text-success fw-bold mt-3">
           Update Product{" "}

@@ -24,10 +24,10 @@ const SellingGraph = () => {
     { name: "Gear Cycle", Profit: 4500, sellingPrice: 240, amt: 240 },
   ];
   return (
-      <div className="container" style={{width:"100%", height:"400px"}}>
+      <div className="container w-100" style={{height:"400px"}}>
         <h2 className="text-center text-success fw-light">This Month Profit and Selling Price Graph</h2>
         <LineChart
-          width={1300}
+          width={500}
           height={300}
           data={data}
           margin={{ top: 5, right: 20, bottom: 5, left: 0 }}

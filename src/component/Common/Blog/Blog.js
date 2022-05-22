@@ -1,9 +1,9 @@
-import React from "react";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Accordion from "@mui/material/Accordion";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import Typography from "@mui/material/Typography";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import React from "react";
 
 const Blog = () => {
   const [expanded, setExpanded] = React.useState(false);
@@ -34,7 +34,7 @@ const Blog = () => {
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-            <table class="table">
+            <table className="table">
               <thead>
                 <tr>
                   <th scope="col">Number</th>
@@ -167,7 +167,7 @@ const Blog = () => {
               are certain key differences between the two that users must keep
               in mind when making a decision.
             </p>
-            <table class="table">
+            <table className="table">
               <thead>
                 <tr>
                   <th scope="col">Number</th>

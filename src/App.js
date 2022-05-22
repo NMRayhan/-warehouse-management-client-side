@@ -10,19 +10,49 @@ import ProductDetails from "./component/ShowingProduct/ProductDetails/ProductDet
 import ManageProducts from "./component/ShowingProduct/ManageProducts/ManageProducts";
 import UpdateProduct from "./component/ShowingProduct/UpdateProduct/UpdateProduct";
 import Error404 from "./component/Common/Error404/Error404";
+import SignIn from "./component/Authentication/SignIn/SignIn";
+import SignUp from "./component/Authentication/SignUp/SignUp";
+import RequireAuth from "./component/Authentication/RequireAuth/RequireAuth";
 
 function App() {
   return (
     <div>
       <Header></Header>
       <Routes>
-        <Route path="/home" element={<Home></Home>}></Route>
+        <Route path="/" element={<Home></Home>}></Route>
         <Route path="/blog" element={<Blog></Blog>}></Route>
-        <Route path="/addProduct" element={<AddProduct></AddProduct>}></Route>
-        <Route path="/manageInventory" element={<ManageProducts></ManageProducts>}></Route>
-        <Route path="/myAdded" element={<MyProduct></MyProduct>}></Route>
-        <Route path="/details/:_id" element={<ProductDetails></ProductDetails>}></Route>
-        <Route path="/product/update/:_id" element={<UpdateProduct></UpdateProduct>}></Route>
+        <Route
+          path="/addProduct"
+          element={
+            <RequireAuth>
+              <AddProduct></AddProduct>
+            </RequireAuth>
+          }
+        ></Route>
+        <Route
+          path="/manageInventory"
+          element={<ManageProducts></ManageProducts>}
+        ></Route>
+
+        <Route
+          path="/myAdded"
+          element={
+            <RequireAuth>
+              <MyProduct />
+            </RequireAuth>
+          }
+        ></Route>
+
+        <Route
+          path="/details/:_id"
+          element={<ProductDetails></ProductDetails>}
+        ></Route>
+        <Route
+          path="/product/update/:_id"
+          element={<UpdateProduct></UpdateProduct>}
+        ></Route>
+        <Route path="/login" element={<SignIn />}></Route>
+        <Route path="/register" element={<SignUp />}></Route>
         <Route path="*" element={<Error404></Error404>}></Route>
       </Routes>
       <Footer></Footer>

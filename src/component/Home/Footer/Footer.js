@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import "./Footer.css"
 
 const Footer = () => {
@@ -9,18 +10,18 @@ const Footer = () => {
                     <div className="col-lg-4 text-lg-start">Copyright &copy; Your Website 2022</div>
                     <div className="col-lg-4 my-3 my-lg-0 row justify-content-center">
                         <div className='col'>
-                            <a className="btn btn-dark btn-social mx-2" href="#!" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                            <Link className="btn btn-dark btn-social mx-2" to="#" aria-label="Twitter"><i className="fab fa-twitter"></i></Link>
                         </div>
                         <div className='col'>
-                            <a className="btn btn-dark btn-social mx-2" href="#!" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <Link className="btn btn-dark btn-social mx-2" to="#" aria-label="Facebook"><i className="fab fa-facebook-f"></i></Link>
                         </div>
                         <div className='col'>
-                            <a className="btn btn-dark btn-social mx-2" href="#!" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            <Link className="btn btn-dark btn-social mx-2" to="#" aria-label="LinkedIn"><i className="fab fa-linkedin-in"></i></Link>
                         </div>
                     </div>
                     <div className="col-lg-4 text-lg-end">
-                        <a className="link-dark text-decoration-none me-3" href="#!">Privacy Policy</a>
-                        <a className="link-dark text-decoration-none" href="#!">Terms of Use</a>
+                        <Link className="link-dark text-decoration-none me-3" to="#">Privacy Policy</Link>
+                        <Link className="link-dark text-decoration-none" to="#">Terms of Use</Link>
                     </div>
                 </div>
             </div>
