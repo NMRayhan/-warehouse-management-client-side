@@ -1,8 +1,8 @@
 import React from "react";
 import { Col, Container, Form, Row } from "react-bootstrap";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { toast, ToastContainer } from "react-toastify";
-import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 
 const AddProduct = () => {
@@ -11,7 +11,7 @@ const AddProduct = () => {
 
   const onSubmit = (data) => {
     console.log("clicked");
-    const url = "http://localhost:5000/addProduct";
+    const url = "https://cryptic-castle-49373.herokuapp.com/addProduct";
     fetch(url, {
       method: "POST",
       headers: {

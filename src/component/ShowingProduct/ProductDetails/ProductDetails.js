@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
-import "./ProductDetails.css";
-import { useAuthState} from "react-firebase-hooks/auth";
 import auth from "../../../firebase.init";
+import "./ProductDetails.css";
 
 const ProductDetails = () => {
   const [details, setDetails] = useState([]);
@@ -22,17 +22,17 @@ const ProductDetails = () => {
   } = details;
 
   useEffect(() => {
-    const url = `http://localhost:5000/product/details/${_id}`;
+    const url = `https://cryptic-castle-49373.herokuapp.com/product/details/${_id}`;
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
         setDetails(data);
       });
-  }, [_id, details]);
+  }, [_id]);
 
   const HandleProductDelivery = (event) => {
     if (user) {
-      const url = `http://localhost:5000/product/quantity/update/${_id}`;
+      const url = `https://cryptic-castle-49373.herokuapp.com/product/quantity/update/${_id}`;
       fetch(url, {
         method: "PUT",
         headers: {
@@ -55,7 +55,7 @@ const ProductDetails = () => {
       const number = window.prompt("Enter New Quantity of Item");
       const quantity = parseInt(number);
       if (quantity > 0) {
-        const url = `http://localhost:5000/product/quantity/reStock/${_id}/${quantity}`;
+        const url = `https://cryptic-castle-49373.herokuapp.com/product/quantity/reStock/${_id}/${quantity}`;
         fetch(url, {
           method: "PUT",
           headers: {

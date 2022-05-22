@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
-import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../../firebase.init";
 
 const ManageProducts = () => {
@@ -11,7 +11,7 @@ const ManageProducts = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const url = `http://localhost:5000/products`;
+    const url = `https://cryptic-castle-49373.herokuapp.com/products`;
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
@@ -29,7 +29,7 @@ const ManageProducts = () => {
     if (user) {
       const proceed = window.confirm("are you sure to delete this product?");
       if (proceed) {
-        const url = `http://localhost:5000/product/${id}`;
+        const url = `https://cryptic-castle-49373.herokuapp.com/product/${id}`;
           fetch(url, {
             method: "DELETE",
           })

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Button } from "react-bootstrap";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useParams } from "react-router-dom";
 import auth from "../../../firebase.init";
@@ -11,7 +10,7 @@ const MyProduct = () => {
   const { email } = useParams();
 
   useEffect(() => {
-    const url = `http://localhost:5000/myAdded/${email}`;
+    const url = `https://cryptic-castle-49373.herokuapp.com/myAdded/${email}`;
     fetch(url)
       .then((response) => response.json())
       .then((data) => {

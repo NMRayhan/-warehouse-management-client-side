@@ -8,7 +8,7 @@ const UpdateProduct = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const url = `http://localhost:5000/product/details/${_id}`;
+    const url = `https://cryptic-castle-49373.herokuapp.com/product/details/${_id}`;
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
@@ -77,7 +77,7 @@ const UpdateProduct = () => {
       Admin_email: Admin_email
     };
 
-    const url = `http://localhost:5000/product/update/${_id}`;
+    const url = `https://cryptic-castle-49373.herokuapp.com/product/update/${_id}`;
     fetch(url, {
       method: "PUT",
       headers: {
