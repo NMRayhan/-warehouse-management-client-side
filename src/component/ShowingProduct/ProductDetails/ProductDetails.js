@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import { useParams } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
 import "./ProductDetails.css";
 
 const ProductDetails = () => {
@@ -33,7 +34,9 @@ const ProductDetails = () => {
         "content-type": "application/json",
       },
       body: JSON.stringify(details),
-    });
+    }).then(res => res.json()).then(data => {
+      toast("Product Delivery Complete")
+    })
   };
 
   const HandleRestock = () => {
@@ -46,12 +49,15 @@ const ProductDetails = () => {
         "content-type": "application/json",
       },
       body: JSON.stringify(details),
+    }).then(res => res.json()).then(data => {
+      toast("Product Re-stock Complete")
     });
   };
 
   return (
     <div className="container mt-5">
       <hr />
+      <ToastContainer/>
       <div className="row details-wrapper">
         <div className="col-md-4 col-lg-4 col-sm-12 product-img border">
           <img src={Product_Image_URL} alt="" className="" />
